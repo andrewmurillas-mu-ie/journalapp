@@ -2,10 +2,9 @@ import "./styles.css";
 
 import React, { useState } from "react";
 
-function App() {
-  const [list, setList] = useState([]);
-  const [name, setName] = useState("");
-  const [duration, setDuration] = useState("");
+const Card = (name, duration) => {
+  const [name, setName] = useState(name);
+  const [duration, setDuration] = useState(duration);
 
   const addItem = () => {
     if (name && duration) {
@@ -45,6 +44,6 @@ function App() {
       </ul>
     </div>
   );
-}
+};
 
-export default App;
+export default Card;
