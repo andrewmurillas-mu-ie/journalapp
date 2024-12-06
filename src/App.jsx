@@ -13,26 +13,12 @@ function App() {
 
   const [showPopUp, setShowPopUp] = useState(false);
 
-  // Nature photography content
-  const contentItems = [];
-
-  const addCard = (name, duration) => {
-    if (name && duration) {
-      // setList([...list]);
-    }
-  };
-
-  const switchShowPopUp = () => {
-    setShowPopUp(!showPopUp);
-    addC;
-  };
-
   return (
     <div className="app">
       <button className="open-button" onMouseEnter={handleMouseEnter}>
         Explore Nature
       </button>
-
+      <Advertisement />
       {/* {showPopUp && (
         <Advertisement onClose={handleAdClose} category={pendingCategory} />
       )} */}
