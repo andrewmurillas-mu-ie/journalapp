@@ -1,21 +1,8 @@
-import "./styles.css";
+import "../styles.css";
 
 import React, { useState } from "react";
 
 const Card = (name, duration) => {
-  const [name, setName] = useState(name);
-  const [duration, setDuration] = useState(duration);
-
-  const addItem = () => {
-    if (name && duration) {
-      setList([...list, { name, duration }]);
-      setName("");
-      setDuration("");
-    } else {
-      alert("Please input valid name and duration");
-    }
-  };
-
   return (
     <div>
       <h1>List</h1>
