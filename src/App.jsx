@@ -13,6 +13,17 @@ function App() {
 
   const [showPopUp, setShowPopUp] = useState(false);
 
+  const addCard = (name, duration) => {
+    if (name && duration) {
+      // setList([...list]);
+    }
+  };
+
+  const switchShowPopUp = () => {
+    setShowPopUp(!showPopUp);
+    addC;
+  };
+
   return (
     <div className="app">
       <button className="open-button" onMouseEnter={handleMouseEnter}>
