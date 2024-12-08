@@ -19,6 +19,10 @@ function App() {
     },
   ];
 
+  const addCard = () => {
+    contentItems = [...contentItems];
+  };
+
   return (
     <div className="app">
       <button className="open-button" onMouseEnter={handleMouseEnter}>
@@ -39,12 +43,13 @@ function App() {
 
       <HalfScreenPopup isOpen={isPopupOpen} onClose={handleClosePopup}>
         <div className="menu-content">
-          <h2></h2>
+          <h2>Actions</h2>
           <nav className="menu-nav">
             <ul>
               <li>
                 <button className="menu-item">
                   <span className="icon">🎯</span>
+                  <p>Create Task</p>
                 </button>
               </li>
             </ul>
