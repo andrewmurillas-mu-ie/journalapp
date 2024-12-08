@@ -9,7 +9,7 @@ function App() {
   const handleClosePopup = () => setIsPopupOpen(false);
 
   // Nature photography content
-  const contentItems = [
+  const [contentItems, setContentItems] = useState([
     {
       id: 1,
       title: "Mountain Majesty",
@@ -17,10 +17,10 @@ function App() {
       description:
         "Majestic mountain peaks reaching into the clouds, showcasing nature's grandeur.",
     },
-  ];
+  ]);
 
   const addCard = () => {
-    contentItems = [...contentItems];
+    setContentItems([...contentItems, ...contentItems]);
   };
 
   return (
@@ -47,7 +47,7 @@ function App() {
           <nav className="menu-nav">
             <ul>
               <li>
-                <button className="menu-item">
+                <button className="menu-item" onClick={addCard}>
                   <span className="icon">🎯</span>
                   <p>Create Task</p>
                 </button>
