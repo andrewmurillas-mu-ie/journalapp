@@ -20,6 +20,8 @@ function App() {
     },
   ]);
 
+  const handleAdClose = () => {};
+
   const addCard = (card) => {
     setContentItems([...contentItems, { card }]);
   };
@@ -33,7 +35,7 @@ function App() {
       <div className="main-content">
         <h1 className="page-title">Nature's Gallery</h1>
         <div className="content-grid">
-          <Advertisement />
+          <Advertisement onClose={handleAdClose} />
 
           {contentItems.map((item) => (
             <div key={item.id} className="content-card">
