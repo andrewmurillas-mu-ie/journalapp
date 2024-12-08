@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import HalfScreenPopup from "./Components/HalfScreenPopup";
+import Advertisement from "./Components/Advertisement";
 import "./App.css";
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
     },
   ]);
 
-  const addCard = () => {
-    setContentItems([...contentItems, ...contentItems]);
+  const addCard = (card) => {
+    setContentItems([...contentItems, { card }]);
   };
 
   return (
@@ -32,6 +33,8 @@ function App() {
       <div className="main-content">
         <h1 className="page-title">Nature's Gallery</h1>
         <div className="content-grid">
+          <Advertisement />
+
           {contentItems.map((item) => (
             <div key={item.id} className="content-card">
               <h3>{item.title}</h3>
