@@ -26,6 +26,7 @@ function App() {
     setContentItems([...contentItems, { card }]);
   };
 
+  const onSubmit = () => {};
   return (
     <div className="app">
       <button className="open-button" onMouseEnter={handleMouseEnter}>
@@ -35,7 +36,7 @@ function App() {
       <div className="main-content">
         <h1 className="page-title">Nature's Gallery</h1>
         <div className="content-grid">
-          <Advertisement onClose={handleAdClose} />
+          <Advertisement onSubmit={onSubmit} onClose={handleAdClose} />
 
           {contentItems.map((item) => (
             <div key={item.id} className="content-card">
