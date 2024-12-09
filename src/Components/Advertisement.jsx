@@ -24,7 +24,6 @@ const Advertisement = ({ onSubmit, onClose }) => {
         </button>
         <button className="ad-skip" onClick={onClose}>
           Close
-
         </button>
       </div>
     </div>
