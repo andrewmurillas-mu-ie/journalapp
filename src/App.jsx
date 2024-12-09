@@ -17,69 +17,66 @@ function App() {
   const handleMouseEnter = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
 
-
-  // Default content items
-  const contentItems = [
-
-    {
-      id: 1,
-      title: "Mountain Majesty",
-      image: "https://source.unsplash.com/random/800x600?mountains,nature",
-      description:
-        "Majestic mountain peaks reaching into the clouds, showcasing nature's grandeur.",
-    },
+  const [contentItems, setContentItems] = useState([
+    { name: "", duration: "" },
   ]);
+  // Default content items
+  // const contentItems = [
+  //   {
+  //     id: 1,
+  //     title: "Mountain Majesty",
+  //     image: "https://source.unsplash.com/random/800x600?mountains,nature",
+  //     description:
+  //       "Majestic mountain peaks reaching into the clouds, showcasing nature's grandeur.",
+  //   },
+  // ];
 
-  const handleAdClose = () => {};
+  // const handleAdClose = () => {};
 
-  const addCard = (card) => {
-    setContentItems([...contentItems, { card }]);
-  };
+  // const addCard = (card) => {
+  //   setContentItems([...contentItems, { card }]);
+  // };
 
-  const onSubmit = () => {};
+  // const onSubmit = () => {};
 
-  const handleCategoryClick = (category) => {
-    setPendingCategory(category);
-    setShowAd(true);
-    setIsPopupOpen(false);
-  };
-  const handleAdClose = () => {
-    setShowAd(false);
-    setSelectedCategory(pendingCategory);
-    setPendingCategory(null);
-  };
-  const handleCategorySelect = (category) => {
-    if (category === "home") {
-      setSelectedCategory(category);
-    } else {
-      setPendingCategory(category);
-      setShowAd(true);
-    }
-  };
+  // const handleCategoryClick = (category) => {
+  //   setPendingCategory(category);
+  //   setShowAd(true);
+  //   setIsPopupOpen(false);
+  // };
+
+  // const handleCategorySelect = (category) => {
+  //   if (category === "home") {
+  //     setSelectedCategory(category);
+  //   } else {
+  //     setPendingCategory(category);
+  //     setShowAd(true);
+  //   }
+  // };
 
   // Get content based on selected category
-  const displayContent =
-    selectedCategory === "mountains"
-      ? irishLocations.mountains
-      : selectedCategory === "forests"
-      ? irishLocations.forests
-      : selectedCategory === "lakes"
-      ? irishLocations.lakes
-      : selectedCategory === "rivers"
-      ? irishLocations.rivers
-      : contentItems;
+  // const displayContent =
+  //   selectedCategory === "mountains"
+  //     ? irishLocations.mountains
+  //     : selectedCategory === "forests"
+  //     ? irishLocations.forests
+  //     : selectedCategory === "lakes"
+  //     ? irishLocations.lakes
+  //     : selectedCategory === "rivers"
+  //     ? irishLocations.rivers
+  //     : contentItems;
 
   return (
-        <div className="content-grid">
-          <Advertisement onSubmit={onSubmit} onClose={handleAdClose} />
+    <>
+      <div className="content-grid">
+        <Advertisement onSubmit={onSubmit} onClose={handleAdClose} />
 
-          {contentItems.map((item) => (
-            <div key={item.id} className="content-card">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
-          ))}
-        </div>
+        {contentItems.map((item) => (
+          <div key={item.id} className="content-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
       </div>
 
       <HalfScreenPopup isOpen={isPopupOpen} onClose={handleClosePopup}>
@@ -97,7 +94,8 @@ function App() {
           </nav>
         </div>
       </HalfScreenPopup>
-    </div>
+    </>
   );
 }
+
 export default App;
