@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import HalfScreenPopup from "./Components/HalfScreenPopup";
-import Advertisement from "./Components/Advertisement";
-import "./App.css";
 
+import NavigationMenu from "./Components/NavigationMenu";
+import Advertisement from "./Components/Advertisement";
+import Home from "./Components/Home";
+
+import "./App.css";
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  //const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("home");
+  const [showAd, setShowAd] = useState(false);
+  const [pendingCategory, setPendingCategory] = useState(null);
 
   const handleMouseEnter = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
 
-  // Nature photography content
-  const [contentItems, setContentItems] = useState([
+
+  // Default content items
+  const contentItems = [
+
     {
       id: 1,
       title: "Mountain Majesty",
@@ -27,14 +37,39 @@ function App() {
   };
 
   const onSubmit = () => {};
-  return (
-    <div className="app">
-      <button className="open-button" onMouseEnter={handleMouseEnter}>
-        Explore Nature
-      </button>
 
-      <div className="main-content">
-        <h1 className="page-title">Nature's Gallery</h1>
+  const handleCategoryClick = (category) => {
+    setPendingCategory(category);
+    setShowAd(true);
+    setIsPopupOpen(false);
+  };
+  const handleAdClose = () => {
+    setShowAd(false);
+    setSelectedCategory(pendingCategory);
+    setPendingCategory(null);
+  };
+  const handleCategorySelect = (category) => {
+    if (category === "home") {
+      setSelectedCategory(category);
+    } else {
+      setPendingCategory(category);
+      setShowAd(true);
+    }
+  };
+
+  // Get content based on selected category
+  const displayContent =
+    selectedCategory === "mountains"
+      ? irishLocations.mountains
+      : selectedCategory === "forests"
+      ? irishLocations.forests
+      : selectedCategory === "lakes"
+      ? irishLocations.lakes
+      : selectedCategory === "rivers"
+      ? irishLocations.rivers
+      : contentItems;
+
+  return (
         <div className="content-grid">
           <Advertisement onSubmit={onSubmit} onClose={handleAdClose} />
 
@@ -65,5 +100,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
