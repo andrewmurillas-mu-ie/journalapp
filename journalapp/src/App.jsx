@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import HalfScreenPopup from "./Components/HalfScreenPopup";
-
 import NavigationMenu from "./Components/NavigationMenu";
 import Advertisement from "./Components/Advertisement";
 import Home from "./Components/Home";
-
 import "./App.css";
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -16,27 +14,6 @@ function App() {
 
   const handleMouseEnter = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
-
-
-  // Default content items
-  const contentItems = [
-
-    {
-      id: 1,
-      title: "Mountain Majesty",
-      image: "https://source.unsplash.com/random/800x600?mountains,nature",
-      description:
-        "Majestic mountain peaks reaching into the clouds, showcasing nature's grandeur.",
-    },
-  ]);
-
-  const handleAdClose = () => {};
-
-  const addCard = (card) => {
-    setContentItems([...contentItems, { card }]);
-  };
-
-  const onSubmit = () => {};
 
   const handleCategoryClick = (category) => {
     setPendingCategory(category);
@@ -70,33 +47,41 @@ function App() {
       : contentItems;
 
   return (
-        <div className="content-grid">
-          <Advertisement onSubmit={onSubmit} onClose={handleAdClose} />
+    <div className="app">
+      <button className="menu-trigger" onClick={() => setIsPopupOpen(true)}>
+        <span>☰</span>
+        <span>Menu</span>
+      </button>
 
-          {contentItems.map((item) => (
-            <div key={item.id} className="content-card">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+      <HalfScreenPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      >
+        <NavigationMenu
+          onClose={() => setIsPopupOpen(false)}
+          onSelectCategory={handleCategorySelect}
+        />
+      </HalfScreenPopup>
+
+      {showAd && (
+        <Advertisement onClose={handleAdClose} category={pendingCategory} />
+      )}
+
+      {selectedCategory === "home" ? (
+        <Home />
+      ) : (
+        <div className="content-grid">
+          {irishLocations[selectedCategory]?.map((item) => (
+            <div key={item.id} className="nature-card">
+              <img src={item.image} alt={item.title} />
+              <div className="card-content">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
             </div>
           ))}
         </div>
-      </div>
-
-      <HalfScreenPopup isOpen={isPopupOpen} onClose={handleClosePopup}>
-        <div className="menu-content">
-          <h2>Actions</h2>
-          <nav className="menu-nav">
-            <ul>
-              <li>
-                <button className="menu-item" onClick={addCard}>
-                  <span className="icon">🎯</span>
-                  <p>Create Task</p>
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </HalfScreenPopup>
+      )}
     </div>
   );
 }
