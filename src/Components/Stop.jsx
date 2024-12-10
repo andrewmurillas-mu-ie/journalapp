@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/stop.css";
+import "../css/play.css";
 import Timer from "../js/timer";
 
 function Stop() {
