@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import HalfScreenPopup from "./Components/HalfScreenPopup";
 
 import NavigationMenu from "./Components/NavigationMenu";
-import Advertisement from "./Components/Advertisement";
+import PopUp from "./Components/Advertisement";
 import Home from "./Components/Home";
 //PA265
 import "./App.css";
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
+  const [isHalfScreenPopupOpen, setIsHalfScreenPopupOpen] = useState(false);
 
   //const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("home");
@@ -34,37 +35,22 @@ function App() {
     setContentItems([...contentItems, { name, duration }]);
   };
 
-  const onSubmit = () => {};
-
-  const handleCategoryClick = (category) => {
-    setPendingCategory(category);
-    setShowAd(true);
-    setIsPopupOpen(false);
-  };
-
-  const handleCategorySelect = (category) => {
-    if (category === "home") {
-      setSelectedCategory(category);
+  const halfMenuPopupToggle = () => {
+    if (isHalfScreenPopupOpen) {
+      setIsHalfScreenPopupOpen(false);
     } else {
-      setPendingCategory(category);
-      setShowAd(true);
+      setIsHalfScreenPopupOpen(true);
     }
   };
 
-  const displayContent =
-    selectedCategory === "mountains"
-      ? irishLocations.mountains
-      : selectedCategory === "forests"
-      ? irishLocations.forests
-      : selectedCategory === "lakes"
-      ? irishLocations.lakes
-      : selectedCategory === "rivers"
-      ? irishLocations.rivers
-      : contentItems;
+  const onSubmit = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <>
       <div className="content-grid">
+        <p>mochila mochila</p>
         {contentItems.map((item) => (
           <div key={item.id} className="content-card">
             <h3>{item.title}</h3>
@@ -72,22 +58,25 @@ function App() {
           </div>
         ))}
       </div>
-      {isPopupOpen && <Advertisement/>}
-      <HalfScreenPopup isOpen={isPopupOpen} onClose={handleClosePopup}>
-        <div className="menu-content">
-          <h2>Actions</h2>
-          <nav className="menu-nav">
-            <ul>
-             <li>
-               <button  onClick={addCard}>
-                 <span className="icon">🎯</span>
-                <p>Create Task</p>
-               </button>
-             </li>
-            </ul>
-          </nav>
-        </div>
-      </HalfScreenPopup>
+      
+      {isPopupOpen && <PopUp onSubmit={onSubmit}/>}
+
+        <button onClick={halfMenuPopupToggle}>hi!</button>
+        <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
+          <div className="menu-content">
+            <h2>Actions</h2>
+            <nav className="menu-nav">
+              <ul>
+              <li>
+                <button  onClick={addCard}>
+                  <span className="icon">🎯</span>
+                  <p>Create Task</p>
+                </button>
+              </li>
+              </ul>
+            </nav>
+          </div>
+        </HalfScreenPopup>
     </>
   );
 }
