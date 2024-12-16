@@ -14,7 +14,7 @@ function App() {
 
   const [contentItems, setContentItems] = useState([]);
 
-  const addCard = ({name, duration}) => {
+  const addCard = ({ name, duration }) => {
     setContentItems([...contentItems, <Card name={name} duration={duration} />]);
   };
 
@@ -42,24 +42,25 @@ function App() {
         ))}
       </div>
 
-      {isPopupOpen && <Popup onSubmit={onSubmit}/>}
+      {isPopupOpen && <Popup onSubmit={onSubmit} />}
 
-        <button onClick={halfMenuPopupToggle}>hi!</button>
-        <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
-          <div className="menu-content">
-            <h2>Actions</h2>
-            <nav className="menu-nav">
-              <ul>
+      <button onClick={halfMenuPopupToggle}>hi!</button>
+      
+      <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
+        <div className="menu-content">
+          <h2>Actions</h2>
+          <nav className="menu-nav">
+            <ul>
               <li>
-                <button  onClick={addCard}>
+                <button onClick={addCard}>
                   <span className="icon">🎯</span>
                   <p>Create Task</p>
                 </button>
               </li>
-              </ul>
-            </nav>
-          </div>
-        </HalfScreenPopup>
+            </ul>
+          </nav>
+        </div>
+      </HalfScreenPopup>
     </>
   );
 }
