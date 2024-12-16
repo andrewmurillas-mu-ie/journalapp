@@ -1,8 +1,4 @@
-node_modules/*
+node_modules/
 .devcontainer
 .codesandbox/
 .vscode/
-node_modules/esbuild/bin/esbuild
-node_modules/.vite/deps_temp_efb4f188/chunk-REFQX4J5.js
-node_modules/@rollup/rollup-linux-x64-musl/rollup.linux-x64-musl.node
-node_modules/@rollup/rollup-linux-x64-musl/rollup.linux-x64-musl.node

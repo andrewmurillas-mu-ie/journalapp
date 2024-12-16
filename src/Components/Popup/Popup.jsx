@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Advertisement.css";
+import "./Popup.css";
 
 const PopUp = ({ onSubmit, onClose }) => {
   const getAdContent = () => {
@@ -18,8 +18,8 @@ const PopUp = ({ onSubmit, onClose }) => {
       <div className="ad-content">
         <div className="ad-icon">{adContent.icon}</div>
         <label>Task </label>
-        <input></input>
-        <button type="submit" className="btn btn-primary" onClick={onSubmit}>
+        <input type="text" id="taskname"></input>
+        <button type="submit" className="btn btn-primary" onClick={() => onSubmit(document.getElementById("taskname"))}>
           Accept
         </button>
         <button className="ad-skip" onClick={onClose}>

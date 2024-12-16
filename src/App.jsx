@@ -1,38 +1,21 @@
 import React, { useState } from "react";
-import HalfScreenPopup from "./Components/HalfScreenPopup";
+import Popup from "./Components/Popup/Popup";
+import HalfScreenPopup from "./Components/HalfScreenPopup/HalfScreenPopup";
+import Card from "./Components/Card/Card";
 
-import NavigationMenu from "./Components/NavigationMenu";
-import PopUp from "./Components/Advertisement";
-import Home from "./Components/Home";
-//PA265
 import "./App.css";
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
   const [isHalfScreenPopupOpen, setIsHalfScreenPopupOpen] = useState(false);
+  const [duration, setDuration] = useState(5);
 
-  //const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("home");
-  const [showAd, setShowAd] = useState(false);
-  const [pendingCategory, setPendingCategory] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
-  const handleClosePopup = () => setIsPopupOpen(false);
-
-  // const [contentItems, setContentItems] = useState([
-  //   { name: "", duration: "" },
-  // ]);
-  // Default content items
-  const contentItems = [
-    {
-      id: 1,
-      title: "Mountain Majesty",
-      image: "https://source.unsplash.com/random/800x600?mountains,nature",
-      description:
-        "Majestic mountain peaks reaching into the clouds, showcasing nature's grandeur.",
-    },
-  ];
+  const [contentItems, setContentItems] = useState([]);
 
   const addCard = ({name, duration}) => {
-    setContentItems([...contentItems, { name, duration }]);
+    setContentItems([...contentItems, <Card name={name} duration={duration} />]);
   };
 
   const halfMenuPopupToggle = () => {
@@ -43,14 +26,14 @@ function App() {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = (name) => {
     setIsPopupOpen(false);
+    addCard(name, duration);
   };
 
   return (
     <>
       <div className="content-grid">
-        <p>mochila mochila</p>
         {contentItems.map((item) => (
           <div key={item.id} className="content-card">
             <h3>{item.title}</h3>
@@ -58,8 +41,8 @@ function App() {
           </div>
         ))}
       </div>
-      
-      {isPopupOpen && <PopUp onSubmit={onSubmit}/>}
+
+      {isPopupOpen && <Popup onSubmit={onSubmit}/>}
 
         <button onClick={halfMenuPopupToggle}>hi!</button>
         <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
