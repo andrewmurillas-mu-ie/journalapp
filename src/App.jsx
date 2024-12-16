@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Popup from "./Components/Popup/Popup";
 import HalfScreenPopup from "./Components/HalfScreenPopup/HalfScreenPopup";
 import Card from "./Components/Card/Card";
-import TimerApp from "./Components/TimerApp/TimmerApp"
 
 import "./App.css";
 function App() {
@@ -47,8 +46,6 @@ function App() {
 
       <button onClick={halfMenuPopupToggle}>hi!</button>
       
-
-      <TimmerApp/>
       <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
         <div className="menu-content">
           <h2>Actions</h2>
