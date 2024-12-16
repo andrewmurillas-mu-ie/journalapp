@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import HalfScreenPopup from "./Components/HalfScreenPopup";
+import HalfScreenPopup from "./Components/HalfScreenPopup/HalfScreenPopup";
 
-import NavigationMenu from "./Components/NavigationMenu";
+import NavigationMenu from "./Components/NavigationMenu/NavigationMenu";
 import PopUp from "./Components/Advertisement";
 import Home from "./Components/Home";
 //PA265
