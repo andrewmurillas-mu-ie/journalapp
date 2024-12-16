@@ -1,5 +1,5 @@
 import "../../styles.css";
-
+import "./App.css"
 import React, { useState } from "react";
 
 function Card(name, duration) {

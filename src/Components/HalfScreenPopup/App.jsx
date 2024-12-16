@@ -1,5 +1,5 @@
 import React from "react";
-import "./HalfScreenPopup.css";
+import "./App.css";
 
 const HalfScreenPopup = ({ isOpen, onClose, children }) => {
   // Close popup when clicking outside

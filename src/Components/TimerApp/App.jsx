@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./TimerApp.css";
+import "./App.css";
 
 function TimerApp() {
   const [isActive, setIsActive] = useState(false);
