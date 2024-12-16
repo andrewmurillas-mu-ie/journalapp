@@ -1,10 +1,7 @@
 import React, { useState } from "react";
+import Popup from "./Components/Popup/Popup";
 import HalfScreenPopup from "./Components/HalfScreenPopup/HalfScreenPopup";
 
-import NavigationMenu from "./Components/NavigationMenu/NavigationMenu";
-import PopUp from "./Components/Advertisement";
-import Home from "./Components/Home";
-//PA265
 import "./App.css";
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
@@ -59,7 +56,7 @@ function App() {
         ))}
       </div>
       
-      {isPopupOpen && <PopUp onSubmit={onSubmit}/>}
+      {isPopupOpen && <Popup onSubmit={onSubmit}/>}
 
         <button onClick={halfMenuPopupToggle}>hi!</button>
         <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
