@@ -1,20 +1,17 @@
 import React from "react";
 import "./App.css";
 
-const Router = (screens) => {
-  const route = (i) => {
-    return (screens[i]);
-  }
-}
-
-const HalfScreenPopup = (screens) => {
+const HalfScreenPopup = (screen) => {
   // Close popup when clicking outside
 
-  return (
-    <div
+  const iconList = ["../../resources/sf-smbol/chart.pie.svg", "../../resources/sf-smbol/list.bullet.svg", "../../resources/sf-smbol/quote.opening.svg"];
 
-      onClick={handleOverlayClick}
-    />
+  return (
+    <div>
+      {iconList.map(icon) => {
+        <i  
+      }}
+    </div>
   );
 };
 
