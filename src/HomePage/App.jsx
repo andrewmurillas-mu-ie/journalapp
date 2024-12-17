@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Popup from "./Components/Popup/Popup";
-import HalfScreenPopup from "./Components/HalfScreenPopup/HalfScreenPopup";
-import Card from "./Components/Card/Card";
+import Popup from "../Components/Popup/App";
+import HalfScreenPopup from "../Components/HalfScreenPopup/App";
+import Card from "../Components/Card/App";
 
 import "./App.css";
 
@@ -46,26 +46,7 @@ function App() {
             {isPopupOpen && <Popup onSubmit={onSubmit} />}
 
             <button onClick={halfMenuPopupToggle}>hi!</button>
-
-            <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
-                <div className="menu-content">
-                    <h2>Actions</h2>
-                    <nav className="menu-nav">
-                        <ul>
-                            <li>
-                                <button onClick={addCard}>
-                                    <span className="icon">🎯</span>
-                                    <p>Create Task</p>
-                                </button>
-                                <button onClick={addCard}>
-                                    <span className="icon">🎯</span>
-                                    <p>Graphs</p>
-                                </button>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </HalfScreenPopup>
+            
         </>
     );
 }
