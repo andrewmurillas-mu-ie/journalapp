@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Popup.css";
+import "./App.css";
 
 const PopUp = ({ onSubmit, onClose }) => {
   const getAdContent = () => {

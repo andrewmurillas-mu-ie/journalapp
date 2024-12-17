@@ -1,68 +1,31 @@
-import React, { useState } from "react";
-import Popup from "./Components/Popup/Popup";
-import HalfScreenPopup from "./Components/HalfScreenPopup/HalfScreenPopup";
-import Card from "./Components/Card/Card";
+import NavBar from "./Components/HalfScreenPopup/App";
+import HomePage from "./HomePage/App";
+import GraphPage from "./GraphPage/App";
+import { useState } from "react";
 
-import "./App.css";
-function App() {
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
-  const [isHalfScreenPopupOpen, setIsHalfScreenPopupOpen] = useState(false);
-  const [duration, setDuration] = useState(5);
-
-  const [selectedCategory, setSelectedCategory] = useState("home");
-  const [showPopup, setShowPopup] = useState(false);
-
-  const [contentItems, setContentItems] = useState([]);
-
-  const addCard = ({ name, duration }) => {
-    setContentItems([...contentItems, <Card name={name} duration={duration} />]);
-  };
-
-  const halfMenuPopupToggle = () => {
-    if (isHalfScreenPopupOpen) {
-      setIsHalfScreenPopupOpen(false);
-    } else {
-      setIsHalfScreenPopupOpen(true);
+class Router  {
+    constructor (screens) {
+        this.screens = screens;
     }
-  };
 
-  const onSubmit = (name) => {
-    setIsPopupOpen(false);
-    addCard(name, duration);
-  };
+    route = (i) => {
+        return (screens[i]);
+    }
+}
 
-  return (
-    <>
-      <div className="content-grid">
-        {contentItems.map((item) => (
-          <div key={item.id} className="content-card">
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
-        ))}
-      </div>
+// This is the landing page
+function App() {
 
-      {isPopupOpen && <Popup onSubmit={onSubmit} />}
+    const screens = [<HomePage/>, <GraphPage/>];
+    const [screenIndex, setScreenIndex] = useState(0);
 
-      <button onClick={halfMenuPopupToggle}>hi!</button>
-      
-      <HalfScreenPopup isOpen={isHalfScreenPopupOpen} onClose={halfMenuPopupToggle}>
-        <div className="menu-content">
-          <h2>Actions</h2>
-          <nav className="menu-nav">
-            <ul>
-              <li>
-                <button onClick={addCard}>
-                  <span className="icon">🎯</span>
-                  <p>Create Task</p>
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </HalfScreenPopup>
-    </>
-  );
+    return (
+        <>
+            <NavBar screen={Router(screens).route(screenIndex)}>
+
+            </NavBar>
+        </>
+    )
 }
 
 export default App;
