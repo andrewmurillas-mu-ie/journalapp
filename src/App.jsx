@@ -1,5 +1,5 @@
 import NavBar from "./Components/HalfScreenPopup/App";
-import HomePage from "./HomePage/App";
+import HomePage from "./ListPage/App";
 import GraphPage from "./GraphPage/App";
 import { useState } from "react";
 

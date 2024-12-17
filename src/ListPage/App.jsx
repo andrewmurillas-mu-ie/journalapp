@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Popup from "../Components/Popup/App";
-import HalfScreenPopup from "../Components/HalfScreenPopup/App";
+import HalfScreenPopup from "../Components/NavBar/App";
 import Card from "../Components/Card/App";
 
 import "./App.css";
