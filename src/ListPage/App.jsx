@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Popup from "../Components/Popup/App";
-import HalfScreenPopup from "../Components/NavBar/App";
 import Card from "../Components/Card/App";
 
 import "./App.css";
@@ -34,7 +33,8 @@ function App() {
 
     return (
         <>
-            <div className="content-grid">
+        <p>fjeiohofiewh</p>
+            {/* <div className="content-grid">
                 {contentItems.map((item) => (
                     <div key={item.id} className="content-card">
                         <h3>{item.title}</h3>
@@ -46,7 +46,7 @@ function App() {
             {isPopupOpen && <Popup onSubmit={onSubmit} />}
 
             <button onClick={halfMenuPopupToggle}>hi!</button>
-            
+             */}
         </>
     );
 }

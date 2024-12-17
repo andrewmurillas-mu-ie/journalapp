@@ -1,5 +1,5 @@
-import NavBar from "./Components/HalfScreenPopup/App";
-import HomePage from "./ListPage/App";
+import NavBar from "./Components/NavBar/App";
+import ListPage from "./ListPage/App";
 import GraphPage from "./GraphPage/App";
 import { useState } from "react";
 
@@ -21,8 +21,8 @@ function App() {
 
     return (
         <>
-            <NavBar screen={Router(screens).route(screenIndex)}>
-
+            <NavBar>
+                <ListPage/>
             </NavBar>
         </>
     )
