@@ -3,8 +3,8 @@ import HomePage from "./HomePage/App";
 import GraphPage from "./GraphPage/App";
 import { useState } from "react";
 
-class Router  {
-    constructor (screens) {
+class Router {
+    constructor(screens) {
         this.screens = screens;
     }
 
@@ -16,16 +16,41 @@ class Router  {
 // This is the landing page
 function App() {
 
-    const screens = [<HomePage/>, <GraphPage/>];
+    const screens = [<HomePage />, <GraphPage />];
     const [screenIndex, setScreenIndex] = useState(0);
 
     return (
         <>
-            <NavBar screen={Router(screens).route(screenIndex)}>
+            <Router>
+                {/* Navigation bar */}
+                <nav style={styles.navBar}>
+                    <Link to="/" style={styles.link}>
+                        Home
+                    </Link>
+                    <Link to="/routines" style={styles.link}>
+                        Routines
+                    </Link>
+                    <Link to="/analytics" style={styles.link}>
+                        Analytics
+                    </Link>
+                    <Link to="/settings" style={styles.link}>
+                        Settings
+                    </Link>
+                </nav>
 
-            </NavBar>
+                {/* Routes */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/routines" element={<Routines />} />
+                    <Route path="/analytics" element={<Analytics />}>
+                        <Route path="daily" element={<Daily />} />
+                        <Route path="monthly" element={<Monthly />} />
+                    </Route>
+                    <Route path="/settings" element={<Settings />} />
+                </Routes>
+            </Router>
         </>
-    )
+    );
 }
 
 export default App;
