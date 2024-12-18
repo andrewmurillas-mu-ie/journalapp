@@ -1,31 +1,58 @@
-import NavBar from "./Components/NavBar/App";
-import ListPage from "./ListPage/App";
-import GraphPage from "./GraphPage/App";
-import { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./component/Home";
+import Routines from "./component/Routines";
+import Analytics from "./component/Analytics/Analytics";
+import Daily from "./component/Analytics/Daily";
+import Monthly from "./component/Analytics/Monthly";
+import Settings from "./component/Settings";
 
-class Router  {
-    constructor (screens) {
-        this.screens = screens;
-    }
-
-    route = (i) => {
-        return (screens[i]);
-    }
-}
-
-// This is the landing page
 function App() {
+  return (
+    <Router>
+      {/* Navigation bar */}
+      <nav style={styles.navBar}>
+        <Link to="/" style={styles.link}>
+          Home
+        </Link>
+        <Link to="/routines" style={styles.link}>
+          Routines
+        </Link>
+        <Link to="/analytics" style={styles.link}>
+          Analytics
+        </Link>
+        <Link to="/settings" style={styles.link}>
+          Settings
+        </Link>
+      </nav>
 
-    const screens = [<HomePage/>, <GraphPage/>];
-    const [screenIndex, setScreenIndex] = useState(0);
-
-    return (
-        <>
-            <NavBar>
-                <ListPage/>
-            </NavBar>
-        </>
-    )
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/routines" element={<Routines />} />
+        <Route path="/analytics" element={<Analytics />}>
+          <Route path="daily" element={<Daily />} />
+          <Route path="monthly" element={<Monthly />} />
+        </Route>
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </Router>
+  );
 }
+
+const styles = {
+  navBar: {
+    display: "flex",
+    justifyContent: "space-around",
+    padding: "10px",
+    background: "#333",
+    color: "white",
+  },
+  link: {
+    textDecoration: "none",
+    color: "white",
+    fontSize: "18px",
+  },
+};
 
 export default App;
