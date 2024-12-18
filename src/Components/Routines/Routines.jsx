@@ -105,6 +105,15 @@ function Routines() {
         </button>
       </div>
 
+      <div>
+        <form >
+          <button title="" value={3}>😁</button>
+          <button title="" value={2}>🙂</button>
+          <button title="" value={1}>😐</button>
+          <button title="" value={0}>😩</button>
+        </form>
+      </div>
+
       <div className="list-section">
         <h3> Added Activities </h3>
         <ul>
@@ -121,13 +130,15 @@ function Routines() {
       {/* reference https://www.geeksforgeeks.org/create-a-stop-watch-using-reactjs/ */}
       <div className="button-container">
         <div className="button-display">
-          {Math.floor(time / 3600000)}h{Math.floor((time % 3600000) / 60000)}m
-          {Math.floor((time % 60000) / 1000)}s
+          <pre>
+            {Math.floor(time / 3600000)}h:
+            {Math.floor((time % 3600000) / 60000)}m:
+            {Math.floor((time % 60000) / 1000)}s
+          </pre>
         </div>
         <div
-          className={`button-status-icon ${
-            isPaused ? "triangle-icon" : "square-icon"
-          }`}
+          className={`button-status-icon ${isPaused ? "triangle-icon" : "square-icon"
+            }`}
           onClick={togglePlayPause}
         >
           {isPaused ? (

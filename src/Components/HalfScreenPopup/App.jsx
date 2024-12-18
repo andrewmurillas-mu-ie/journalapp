@@ -8,11 +8,7 @@ const HalfScreenPopup = (screen) => {
 
   return (
     <div>
-      {iconList.map(icon) = () => (
-        {
-          
-        }
-      )}
+      
     </div>
   );
 };
