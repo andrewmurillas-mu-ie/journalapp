@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Popup from "../Components/Popup/App";
-import HalfScreenPopup from "../Components/HalfScreenPopup/App";
-import Card from "../Components/Card/App";
+import Popup from "../components/Popup/App";
+import HalfScreenPopup from "../components/HalfScreenPopup/App";
+import Card from "../components/Card/App";
 
 import "./App.css";
 
