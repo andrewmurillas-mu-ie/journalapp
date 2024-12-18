@@ -105,15 +105,6 @@ function Routines() {
         </button>
       </div>
 
-      <div>
-        <form >
-          <button title="" value={3}>😁</button>
-          <button title="" value={2}>🙂</button>
-          <button title="" value={1}>😐</button>
-          <button title="" value={0}>😩</button>
-        </form>
-      </div>
-
       <div className="list-section">
         <h3> Added Activities </h3>
         <ul>
